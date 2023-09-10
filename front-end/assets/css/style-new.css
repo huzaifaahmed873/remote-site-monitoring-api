@@ -24,7 +24,7 @@
     background: #999; /* Grey to darker grey gradient */
     padding: 20px;
     border-radius: 10px;
-    background-image: url('../img/repeating-triangles.svg');
+    background-image: url('../img/background-image.svg');
     background-size: cover;
     background-repeat: no-repeat;
     /* transition: transform 0.3s ease; Smooth transition for scale effect */
