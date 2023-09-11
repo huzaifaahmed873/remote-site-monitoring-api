@@ -73,6 +73,7 @@
   <script type="text/javascript" src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
   <script type="text/javascript" src="node_modules/angular-route/angular-route.js"></script>
   <script type="text/javascript" src="node_modules/select2/dist/js/select2.min.js"></script>
+  <script type="text/javascript" src="node_modules/echarts/dist/echarts.min.js"></script>
 
   <script type="text/javascript" src="app.module.js"></script>
   <script type="text/javascript" src="app.config.js"></script>
@@ -93,6 +94,7 @@
   <script src="components/auth/auth.component.js"></script>
   <script src="components/side-navigation/navigation.component.js"></script>
   <script src="components/navigation/navigation.component.js"></script>
+  <script src="components/dashboard-graphs/dashboard-graphs.component.js"></script>
   <script src="components/dashboard/dashboard.component.js"></script>
   <script src="components/transaction/transaction.component.js"></script>
   <script src="components/transaction-add-update-modal/transaction-add-update-modal.component.js"></script>
@@ -101,7 +103,7 @@
   <script src="components/user-add-credit-modal/user-add-credit-modal.component.js"></script>
 </head>
 
-<body class="g-sidenav-show grey-body">
+<body class="g-sidenav-show" style="background-color: rgba(203, 203, 210, 0.15);">
   <script type="text/javascript"
     src="assets/theme/global/js/plugins/angular-dropdown-multiselect/angularjs-dropdown-multiselect.min.js"></script>
   <script type="text/javascript" src="assets/theme/global/js/plugins/ui/moment/moment.min.js"></script>
@@ -118,7 +120,6 @@
   <script src="assets/js/core/bootstrap.min.js"></script>
   <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="assets/js/plugins/chartjs.min.js"></script>
   <div class="row">
     <div class="col-lg-3">
       <side-navigation></side-navigation>
@@ -132,9 +133,6 @@
           </div>
           <!-- Main content -->
           <!-- /main content -->
-          <footer class="d-flex justify-content-center mt-5 p-3" style="position: fixed;">
-            <span class="font-weight-bolder">All rights reserved by MarkCoders</span>
-          </footer>
         </div>
       </main>
     </div>

@@ -5,7 +5,7 @@ function UserService($http, API_URL) {
     login: function (auth) {
       return $http({
         method: 'POST',
-        url: API_URL+'/user/signin',
+        url: API_URL+'/auth/login',
         data: auth
       });
     },
