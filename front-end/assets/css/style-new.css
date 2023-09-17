@@ -21,7 +21,7 @@
 }
 
 .grey-body {
-    background: #999; /* Grey to darker grey gradient */
+    background: #999999e0; /* Grey to darker grey gradient */
     padding: 20px;
     border-radius: 10px;
     background-image: url('../img/background-image.svg');
@@ -34,4 +34,21 @@
   .grey-body:hover {
     /* transform: scale(1.1); Scale up the element on hover */
     cursor: pointer; /* Change cursor to indicate interactivity */
+  }
+
+  .box:nth-child(even) {
+    background-color: #dbe2ec; /* Even divs get this color */
+  }
+  
+  .box:nth-child(odd) {
+    background-color: #E3F5FF; /* Odd divs get this color */
+  }
+  
+  .box {
+    width: 70%;
+    height: auto;
+  }
+
+  .card-header{
+    background-color: transparent;
   }
