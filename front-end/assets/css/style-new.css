@@ -1,54 +1,96 @@
-.background-button{
-    color:black !important;
-    display: flex;
-    justify-content: center;
-    padding: 5px 10px 5px 10px;
-    transition: box-shadow 0.5s;
-    border-radius: 5px;
-    cursor: pointer;
+.background-button {
+  color: black !important;
+  display: flex;
+  justify-content: center;
+  padding: 5px 10px 5px 10px;
+  transition: box-shadow 0.5s;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.background-button.active{
-    /* border: 2px solid black; */
-    border-radius: 5px;
-    box-shadow: inset 0px 0px 4px 0px grey;
-    
+.background-button.active {
+  /* border: 2px solid black; */
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 4px 0px grey;
 }
 
-.french-flag-span{
-    padding-left: 3px;
-    padding-right: 8px;
+.french-flag-span {
+  padding-left: 3px;
+  padding-right: 8px;
 }
 
 .grey-body {
-    background: #999999e0; /* Grey to darker grey gradient */
-    padding: 20px;
-    border-radius: 10px;
-    background-image: url('../img/background-image.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    /* transition: transform 0.3s ease; Smooth transition for scale effect */
-  }
-  
-  /* Hover effect to scale the element on hover */
-  .grey-body:hover {
-    /* transform: scale(1.1); Scale up the element on hover */
-    cursor: pointer; /* Change cursor to indicate interactivity */
+  background: #999999e0; /* Grey to darker grey gradient */
+  padding: 20px;
+  border-radius: 10px;
+  background-image: url("../img/background-image.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* transition: transform 0.3s ease; Smooth transition for scale effect */
+}
+
+/* Hover effect to scale the element on hover */
+.grey-body:hover {
+  /* transform: scale(1.1); Scale up the element on hover */
+  cursor: pointer; /* Change cursor to indicate interactivity */
+}
+
+.box:nth-child(even) {
+  background-color: #dbe2ec; /* Even divs get this color */
+}
+
+.box:nth-child(odd) {
+  background-color: #e3f5ff; /* Odd divs get this color */
+}
+
+.box {
+  width: 70%;
+  height: auto;
+}
+
+.card-header {
+  background-color: transparent;
+}
+
+@media only screen and (max-width: 600px) {
+  .sm-adjust-value-box {
+    position: relative;
+    top: 100%;
+    left: 50%;
+    transform: translate(-30%, 0%);
+    margin-top: 0px;
   }
 
-  .box:nth-child(even) {
-    background-color: #dbe2ec; /* Even divs get this color */
-  }
-  
-  .box:nth-child(odd) {
-    background-color: #E3F5FF; /* Odd divs get this color */
-  }
-  
   .box {
-    width: 70%;
+    width: 55%;
     height: auto;
   }
+}
 
-  .card-header{
-    background-color: transparent;
-  }
+.select-field-dashboard {
+  border: 0px;
+  padding: 0px 18px;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.dashboard-span {
+  color: #422f8a;
+  position: relative; /* Required for positioning pseudo-element */
+  display: inline; /* Ensure label only takes the necessary width */
+  padding-top: 8px;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.dashboard-span::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 32px;
+  height: 4px;
+  transform: translateX(-50%);
+  background-color: #422f8a;
+  border-radius: 10px;
+}
