@@ -43,8 +43,21 @@
   background-color: #e3f5ff; /* Odd divs get this color */
 }
 
+.box-site:nth-child(even) {
+  background-color: #dbe2ec; /* Even divs get this color */
+}
+
+.box-site:nth-child(odd) {
+  background-color: #e3f5ff; /* Odd divs get this color */
+}
+
 .box {
   width: 70%;
+  height: auto;
+}
+
+.box-site {
+  width: 15%;
   height: auto;
 }
 
@@ -93,4 +106,43 @@
   transform: translateX(-50%);
   background-color: #422f8a;
   border-radius: 10px;
+}
+
+.bg-grey{
+  background-color: #EDEDED;
+}
+
+.site-image{
+  width: 100%;
+  height: auto;
+}
+
+.indicator-off {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  z-index: 10000;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.indicator-on {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: green;
+  z-index: 10000;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.indicator-novalue {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: grey;
+  z-index: 10000;
+  border-radius: 50%;
+  border: 1px solid black;
 }

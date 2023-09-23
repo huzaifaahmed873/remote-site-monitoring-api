@@ -19,11 +19,9 @@ angular.module("myApp").config([
 
     // set router
     $routeProvider
-      .when("/auth/:action", { template: "<auth></auth>" , active: 'login'})
-      .when("/pages", { template: "<page-list></page-list>" })
+      .when("/auth/:action", { template: "<auth></auth>", active: 'login'})
+      .when("/site", { template: "<site></site>", active: 'site' })
       .when("/dashboard", { template: "<dashboard></dashboard>", active: 'dashboard' })
-      .when("/transaction", { template: "<transaction></transaction>", active: 'transaction' })
-      .when("/user", { template: "<user></user>", active: 'agent' })
       // .when("/lookupcountrylist", { template: "<lookup-country-list></lookup-country-list>" })
       // .when("/lookupstatelist", { template: "<lookup-state-list></lookup-state-list>" })
       // .when("/lookupcitylist", { template: "<lookup-city-list></lookup-city-list>" })

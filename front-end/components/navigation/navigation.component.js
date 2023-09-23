@@ -7,13 +7,11 @@ angular.
     controller: [
       '$scope',
       '$rootScope',
-      'NotificationService',
       'UserService',
       'Constant',
       '$route',
       function NavigationController($scope,
         $rootScope,
-        NotificationService, 
         UserService,
         Constant,
         $route) {
@@ -36,7 +34,7 @@ angular.
           ctrl.changeLanguage();
           $rootScope.$broadcast("Language::Change")
           // setInterval(function(){
-            ctrl.getNotification();
+            // ctrl.getNotification();
           // }, 1000);
         }
 

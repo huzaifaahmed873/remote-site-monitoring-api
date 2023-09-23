@@ -85,10 +85,7 @@
 
   <!-- services -->
   <script src="services/user/user.service.js"></script>
-  <script src="services/transactions-service/transaction-service.service.js"></script>
   <script src="services/dashboard/dashboard.service.js"></script>
-  <script src="services/lookup-data-service/lookup-data-service.service.js"></script>
-  <script src="services/notification/notification.service.js"></script>
 
   <!-- components -->
   <script src="components/auth/auth.component.js"></script>
@@ -96,11 +93,7 @@
   <script src="components/navigation/navigation.component.js"></script>
   <script src="components/dashboard-graphs/dashboard-graphs.component.js"></script>
   <script src="components/dashboard/dashboard.component.js"></script>
-  <script src="components/transaction/transaction.component.js"></script>
-  <script src="components/transaction-add-update-modal/transaction-add-update-modal.component.js"></script>
-  <script src="components/user-list/user.component.js"></script>
-  <script src="components/user-add-update-modal/user-add-update-modal.component.js"></script>
-  <script src="components/user-add-credit-modal/user-add-credit-modal.component.js"></script>
+  <script src="components/site-component/site-component.component.js"></script>
 </head>
 
 <body class="g-sidenav-show">
@@ -120,17 +113,17 @@
   <script src="assets/js/core/bootstrap.min.js"></script>
   <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <div class="row">
+  <div class="row p-0">
+    <navigation></navigation>
     <div class="col-lg-3">
       <side-navigation></side-navigation>
     </div>
     <div class="col-lg-9">
-      <main class="main-content position-relative border-radius-lg">
-        <navigation></navigation>
-        <div class="page-content">
-          <div class="content-wrapper">
+      <!-- <main class="main-content position-relative border-radius"> -->
+        <!-- <div class="page-content"> -->
+          <!-- <div class="content-wrapper"> -->
             <div ng-view class="view-frame" id="cnt"></div>
-          </div>
+          <!-- </div> -->
           <!-- Main content -->
           <!-- /main content -->
         </div>
