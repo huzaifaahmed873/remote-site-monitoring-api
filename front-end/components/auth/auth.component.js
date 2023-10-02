@@ -18,10 +18,7 @@ angular.module("component").component("auth", {
       ctrl.errors = {};
 
       ctrl.$onInit = function () {
-        if ($routeParams.action == "logout"){
-          ctrl.logout();
-          document.getElementsByTagName('body')[0].style.backgroundImage= config.ASSET_URL + "front-end/assets/img/background-image.svg"
-        } 
+        if ($routeParams.action == "logout") ctrl.logout();
       };
 
       ctrl.init = function (settings) {
