@@ -126,7 +126,9 @@ angular.module("component").component("site", {
         ctrl.barGraphRps1 = echarts.init(document.getElementById("bar-skid-1"));
 
         ctrl.barGraphRps1.setOption({
-          
+          title: {
+            text: "ECharts Getting Started Example",
+          },
           tooltip: {},
           xAxis: {
             data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
@@ -143,7 +145,9 @@ angular.module("component").component("site", {
         ctrl.barGraphRps2 = echarts.init(document.getElementById("bar-skid-2"));
 
         ctrl.barGraphRps2.setOption({
-          
+          title: {
+            text: "ECharts Getting Started Example",
+          },
           tooltip: {},
           xAxis: {
             data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
@@ -161,7 +165,9 @@ angular.module("component").component("site", {
         ctrl.barGraphRps3 = echarts.init(document.getElementById("bar-skid-3"));
 
         ctrl.barGraphRps3.setOption({
-          
+          title: {
+            text: "ECharts Getting Started Example",
+          },
           tooltip: {},
           xAxis: {
             data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
@@ -185,56 +191,114 @@ angular.module("component").component("site", {
         ctrl.guageGraphRps1.setOption({
           series: [
             {
-              type: 'gauge',
-              axisLine: {
-                lineStyle: {
-                  width: 30,
-                  color: [
-                    [0.5, '#67e0e3'],
-                    [0.9, '#37a2da'],
-                    [1, '#fd666d'],
-                    
-                  ]
-                }
+              type: "gauge",
+              center: ["50%", "70%"],
+              startAngle: 200,
+              endAngle: -20,
+              min: 0,
+              max: 100,
+              splitNumber: 10,
+              itemStyle: {
+                color: "#FFAB91",
+              },
+              progress: {
+                show: true,
+                width: 20,
               },
               pointer: {
-                itemStyle: {
-                  color: 'auto'
-                }
+                show: false,
+              },
+              axisLine: {
+                lineStyle: {
+                  width: 20,
+                },
               },
               axisTick: {
-                distance: -30,
-                length: 10,
-                lineStyle: {
-                  color: '#fff',
-                  width: 2
-                }
+                // distance: -45,
+                // splitNumber: 5,
+                // lineStyle: {
+                //   width: 2,
+                //   color: '#999'
+                // }
+                show: false,
               },
               splitLine: {
-                distance: -30,
-                length: 30,
+                distance: 0,
+                length: 0,
                 lineStyle: {
-                  color: '#fff',
-                  width: 4
-                }
+                  // width: 0,
+                  // color: '#999'
+                  show: false,
+                },
+                // show: false
+                // show: false
               },
               axisLabel: {
-                color: 'inherit',
-                distance: 40,
-                fontSize: 20
+                distance: -20,
+                color: "#999",
+                fontSize: 12,
+              },
+              anchor: {
+                show: false,
+              },
+              title: {
+                show: false,
               },
               detail: {
                 valueAnimation: true,
-                formatter: '{value} km/h',
+                width: "30%",
+                lineHeight: 20,
+                borderRadius: 4,
+                offsetCenter: [0, "-15%"],
                 fontSize: 30,
-                color: 'inherit'
+                fontWeight: "bold",
+                formatter: "{value}",
+                color: "inherit",
               },
               data: [
                 {
-                  value: 70
-                }
-              ]
-            }
+                  value: 70,
+                },
+              ],
+            },
+            {
+              type: "gauge",
+              center: ["50%", "70%"],
+              startAngle: 200,
+              endAngle: -20,
+              min: 0,
+              max: 100,
+              itemStyle: {
+                color: "red",
+              },
+              progress: {
+                show: true,
+                width: 8,
+              },
+              pointer: {
+                show: false,
+              },
+              axisLine: {
+                show: false,
+              },
+              axisTick: {
+                show: false,
+              },
+              splitLine: {
+                show: false,
+              },
+              axisLabel: {
+                show: false,
+              },
+              detail: {
+                show: false,
+              },
+              data: [
+                {
+                  value: 70,
+                },
+              ],
+            },
           ],
         });
 
@@ -245,56 +309,114 @@ angular.module("component").component("site", {
         ctrl.guageGraphRps2.setOption({
           series: [
             {
-              type: 'gauge',
-              axisLine: {
-                lineStyle: {
-                  width: 30,
-                  color: [
-                    [0.5, '#67e0e3'],
-                    [0.9, '#37a2da'],
-                    [1, '#fd666d'],
-                    
-                  ]
-                }
+              type: "gauge",
+              center: ["50%", "70%"],
+              startAngle: 200,
+              endAngle: -20,
+              min: 0,
+              max: 100,
+              splitNumber: 10,
+              itemStyle: {
+                color: "#FFAB91",
+              },
+              progress: {
+                show: true,
+                width: 20,
               },
               pointer: {
-                itemStyle: {
-                  color: 'auto'
-                }
+                show: false,
+              },
+              axisLine: {
+                lineStyle: {
+                  width: 20,
+                },
               },
               axisTick: {
-                distance: -30,
-                length: 10,
-                lineStyle: {
-                  color: '#fff',
-                  width: 2
-                }
+                // distance: -45,
+                // splitNumber: 5,
+                // lineStyle: {
+                //   width: 2,
+                //   color: '#999'
+                // }
+                show: false,
               },
               splitLine: {
-                distance: -30,
-                length: 30,
+                distance: 0,
+                length: 0,
                 lineStyle: {
-                  color: '#fff',
-                  width: 4
-                }
+                  // width: 0,
+                  // color: '#999'
+                  show: false,
+                },
+                // show: false
+                // show: false
               },
               axisLabel: {
-                color: 'inherit',
-                distance: 40,
-                fontSize: 20
+                distance: -20,
+                color: "#999",
+                fontSize: 12,
+              },
+              anchor: {
+                show: false,
+              },
+              title: {
+                show: false,
               },
               detail: {
                 valueAnimation: true,
-                formatter: '{value} km/h',
+                width: "30%",
+                lineHeight: 20,
+                borderRadius: 4,
+                offsetCenter: [0, "-15%"],
                 fontSize: 30,
-                color: 'inherit'
+                fontWeight: "bold",
+                formatter: "{value}",
+                color: "inherit",
               },
               data: [
                 {
-                  value: 70
-                }
-              ]
-            }
+                  value: 70,
+                },
+              ],
+            },
+            {
+              type: "gauge",
+              center: ["50%", "70%"],
+              startAngle: 200,
+              endAngle: -20,
+              min: 0,
+              max: 100,
+              itemStyle: {
+                color: "red",
+              },
+              progress: {
+                show: true,
+                width: 8,
+              },
+              pointer: {
+                show: false,
+              },
+              axisLine: {
+                show: false,
+              },
+              axisTick: {
+                show: false,
+              },
+              splitLine: {
+                show: false,
+              },
+              axisLabel: {
+                show: false,
+              },
+              detail: {
+                show: false,
+              },
+              data: [
+                {
+                  value: 70,
+                },
+              ],
+            },
           ],
         });
 
@@ -305,56 +427,114 @@ angular.module("component").component("site", {
         ctrl.guageGraphRps3.setOption({
           series: [
             {
-              type: 'gauge',
-              axisLine: {
-                lineStyle: {
-                  width: 30,
-                  color: [
-                    [0.5, '#67e0e3'],
-                    [0.9, '#37a2da'],
-                    [1, '#fd666d'],
-                    
-                  ]
-                }
+              type: "gauge",
+              center: ["50%", "70%"],
+              startAngle: 200,
+              endAngle: -20,
+              min: 0,
+              max: 100,
+              splitNumber: 10,
+              itemStyle: {
+                color: "#FFAB91",
+              },
+              progress: {
+                show: true,
+                width: 20,
               },
               pointer: {
-                itemStyle: {
-                  color: 'auto'
-                }
+                show: false,
+              },
+              axisLine: {
+                lineStyle: {
+                  width: 20,
+                },
               },
               axisTick: {
-                distance: -30,
-                length: 10,
-                lineStyle: {
-                  color: '#fff',
-                  width: 2
-                }
+                // distance: -45,
+                // splitNumber: 5,
+                // lineStyle: {
+                //   width: 2,
+                //   color: '#999'
+                // }
+                show: false,
               },
               splitLine: {
-                distance: -30,
-                length: 30,
+                distance: 0,
+                length: 0,
                 lineStyle: {
-                  color: '#fff',
-                  width: 4
-                }
+                  // width: 0,
+                  // color: '#999'
+                  show: false,
+                },
+                // show: false
+                // show: false
               },
               axisLabel: {
-                color: 'inherit',
-                distance: 40,
-                fontSize: 20
+                distance: -20,
+                color: "#999",
+                fontSize: 12,
+              },
+              anchor: {
+                show: false,
+              },
+              title: {
+                show: false,
               },
               detail: {
                 valueAnimation: true,
-                formatter: '{value} km/h',
+                width: "30%",
+                lineHeight: 20,
+                borderRadius: 4,
+                offsetCenter: [0, "-15%"],
                 fontSize: 30,
-                color: 'inherit'
+                fontWeight: "bold",
+                formatter: "{value}",
+                color: "inherit",
               },
               data: [
                 {
-                  value: 70
-                }
-              ]
-            }
+                  value: 70,
+                },
+              ],
+            },
+            {
+              type: "gauge",
+              center: ["50%", "70%"],
+              startAngle: 200,
+              endAngle: -20,
+              min: 0,
+              max: 100,
+              itemStyle: {
+                color: "red",
+              },
+              progress: {
+                show: true,
+                width: 8,
+              },
+              pointer: {
+                show: false,
+              },
+              axisLine: {
+                show: false,
+              },
+              axisTick: {
+                show: false,
+              },
+              splitLine: {
+                show: false,
+              },
+              axisLabel: {
+                show: false,
+              },
+              detail: {
+                show: false,
+              },
+              data: [
+                {
+                  value: 70,
+                },
+              ],
+            },
           ],
         });
       };
