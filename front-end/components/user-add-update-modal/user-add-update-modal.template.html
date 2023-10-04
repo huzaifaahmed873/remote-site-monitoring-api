@@ -1,0 +1,118 @@
+<div class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" translate-language="User">User</h5>
+        <a data-dismiss="modal" aria-label="Close" ng-click="$ctrl.closeModal()">
+          <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-x-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="modal-body">
+        <div class="row mb-2">
+          <div class="col-lg-3">
+            <label class="form-label" translate-language="User Type">User Type: </label>
+          </div>
+          <div class="col-lg-9">
+            <select class="form-control" ng-model="$ctrl.user.user_role">
+              <option value="">Select a user type</option>
+              <option value="manager">Admin</option>
+              <option value="agent">User</option>
+            </select>
+            <span class="text-danger" ng-repeat="error in $ctrl.error.user_role" ng-bind="error"></span>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-lg-3">
+            <label class="form-label">Email/Username: </label>
+          </div>
+          <div class="col-lg-9">
+            <input class="form-control" type="text" ng-model="$ctrl.user.username" placeholder="abc@mail.com" />
+            <span class="text-danger" ng-repeat="error in $ctrl.error.username" ng-bind="error"></span>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-lg-3">
+            <label class="form-label" translate-language="Password">Password: </label>
+          </div>
+          <div class="col-lg-9">
+            <input class="form-control" type="password" ng-model="$ctrl.user.password"/>
+            <span class="text-danger" ng-repeat="error in $ctrl.error.password" ng-bind="error"></span>
+
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-lg-3">
+            <label class="form-label">Dashboard Heading 1: </label>
+          </div>
+          <div class="col-lg-9">
+            <input class="form-control" type="text" ng-model="$ctrl.user.dash_head1" />
+            <span class="text-danger" ng-repeat="error in $ctrl.error.dash_head1" ng-bind="error"></span>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-lg-3">
+            <label class="form-label">Dashboard Heading 2: </label>
+          </div>
+          <div class="col-lg-9">
+            <input class="form-control" type="text" ng-model="$ctrl.user.dash_head2" />
+            <span class="text-danger" ng-repeat="error in $ctrl.error.dash_head2" ng-bind="error"></span>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-lg-3">
+            <label class="form-label">Dashboard Heading 3: </label>
+          </div>
+          <div class="col-lg-9">
+            <input class="form-control" type="text" ng-model="$ctrl.user.dash_head3" />
+            <span class="text-danger" ng-repeat="error in $ctrl.error.dash_head3" ng-bind="error"></span>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-lg-3">
+            <label class="form-label">Site Heading 1: </label>
+          </div>
+          <div class="col-lg-9">
+            <input class="form-control" type="text" ng-model="$ctrl.user.site_head1" />
+            <span class="text-danger" ng-repeat="error in $ctrl.error.site_head1" ng-bind="error"></span>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-lg-3">
+            <label class="form-label">Site Heading 2: </label>
+          </div>
+          <div class="col-lg-9">
+            <input class="form-control" type="text" ng-model="$ctrl.user.site_head2" />
+            <span class="text-danger" ng-repeat="error in $ctrl.error.site_head2" ng-bind="error"></span>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-lg-3">
+            <label class="form-label">Site Heading 3: </label>
+          </div>
+          <div class="col-lg-9">
+            <input class="form-control" type="text" ng-model="$ctrl.user.site_head3" />
+            <span class="text-danger" ng-repeat="error in $ctrl.error.site_head3" ng-bind="error"></span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="$ctrl.closeModal()">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="$ctrl.createUser()" ng-show="!$ctrl.isEditMode">
+          Add
+        </button>
+        <button type="button" class="btn btn-primary" ng-click="$ctrl.updateUser()" ng-show="$ctrl.isEditMode">
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
