@@ -15,7 +15,7 @@
                   <span ng-repeat="error in $ctrl.errors.general" class="text-danger text-xs font-weight-bolder">{{error}}</span>
                   <form role="form" ng-submit="$ctrl.login()">
                     <div class="mb-3">
-                      <input type="text" class="form-control form-control-md" ng-model="$ctrl.user.email" placeholder="Email" aria-label="Email">
+                      <input type="text" class="form-control form-control-md" ng-model="$ctrl.user.username" placeholder="Email" aria-label="Email">
                     </div>
                     <div class="mb-3">
                       <input type="password" class="form-control form-control-md" ng-model="$ctrl.user.password" placeholder="Password" aria-label="Password">

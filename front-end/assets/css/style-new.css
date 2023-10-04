@@ -78,6 +78,11 @@
     width: 55%;
     height: auto;
   }
+
+  .box-site {
+    width: 15%;
+    height: auto;
+  }
 }
 
 .select-field-dashboard {
@@ -108,13 +113,18 @@
   border-radius: 10px;
 }
 
-.bg-grey{
-  background-color: #EDEDED;
+.bg-grey {
+  background-color: #ededed;
 }
 
-.site-image{
-  width: 100%;
+/* .site-image-container {
+  position: relative;
+  max-width: 100%;
+} */
+
+/* .site-image{
   height: auto;
+  max-width: 100%;
 }
 
 .indicator-off {
@@ -145,4 +155,30 @@
   z-index: 10000;
   border-radius: 50%;
   border: 1px solid black;
+}
+
+@media screen and (max-width: 768px) {
+  .indicator {
+    width: 8%;
+    padding-top: 8%;
+  }
+} */
+
+.canvas-container {
+  position: relative;
+  max-width: 100%; /* Ensure the container does not exceed the viewport width */
+}
+
+canvas {
+  display: block; /* Ensure the canvas behaves like a block element */
+  max-width: 100%; /* Make the canvas responsive */
+  height: auto; /* Allow the canvas height to adjust proportionally */
+}
+
+@media screen and (max-width: 768px) {
+  canvas {
+    display: block; /* Ensure the canvas behaves like a block element */
+    max-width: 100%; /* Make the canvas responsive */
+    height: 1000%; /* Allow the canvas height to adjust proportionally */
+  }
 }

@@ -62,6 +62,9 @@ angular.
           ctrl.isLogin = UserService.authenticate();
         }
         
+        ctrl.showAddModal = function (){
+          $rootScope.$broadcast("User:ShowAddModal");
+        }
 
         // $scope.$on('UserService:login', function(){
         //   ctrl.isSuperAdmin = localStorage.getItem('user_type_id') == ctrl.Constant.UserType.SUPER_ADMIN ? true : false;

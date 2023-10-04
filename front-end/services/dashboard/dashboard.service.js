@@ -4,8 +4,8 @@ function DashboardService($rootScope, $http, API_URL) {
   return {
     get: function () {
       return $http({
-        method: 'GET',
-        url: API_URL + '/dashboard/get'
+        method: 'POST',
+        url: API_URL + '/values/flowRate1'
       });
     },
 

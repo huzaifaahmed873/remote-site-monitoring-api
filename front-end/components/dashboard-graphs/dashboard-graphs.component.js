@@ -8,7 +8,7 @@ angular.module("component").component("dashboardGraph", {
     "$routeParams",
     "$rootScope",
     // "RevenueService",
-    // "DashboardService",
+    "DashboardService",
     "UserService",
     "Constant",
     function DashboardGraphController(
@@ -17,7 +17,7 @@ angular.module("component").component("dashboardGraph", {
       $routeParams,
       $rootScope,
       // RevenueService,
-      // DashboardService,
+      DashboardService,
       UserService,
       Constant
     ) {
@@ -29,7 +29,10 @@ angular.module("component").component("dashboardGraph", {
       ctrl.guageGraphRps1;
       ctrl.guageGraphRps1;
       ctrl.guageGraphRps1;
+      ctrl.authUser;
       ctrl.$onInit = function () {
+        ctrl.authUser = JSON.parse(localStorage.getItem("user"));
+        console.log(ctrl.authUser);
         ctrl.initBarGraph();
         ctrl.initGuageGraph();
         window.addEventListener("resize", function () {
@@ -40,18 +43,19 @@ angular.module("component").component("dashboardGraph", {
           ctrl.guageGraphRps2.resize();
           ctrl.guageGraphRps3.resize();
         });
+        ctrl.initDashboardData();
       };
 
       ctrl.initBarGraph = function () {
         ctrl.barGraphRps1 = echarts.init(document.getElementById("bar-rps-1"));
 
         ctrl.barGraphRps1.setOption({
-          title: {
-            text: "ECharts Getting Started Example",
-          },
+          // title: {
+          //   text: "ECharts Getting Started Example",
+          // },
           tooltip: {},
           xAxis: {
-            data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
+            data: ["monday", "truesday", "wednesday", "thursday", "friday"],
           },
           yAxis: {},
           series: [
@@ -65,12 +69,12 @@ angular.module("component").component("dashboardGraph", {
         ctrl.barGraphRps2 = echarts.init(document.getElementById("bar-rps-2"));
 
         ctrl.barGraphRps2.setOption({
-          title: {
-            text: "ECharts Getting Started Example",
-          },
+          // title: {
+          //   text: "ECharts Getting Started Example",
+          // },
           tooltip: {},
           xAxis: {
-            data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
+            data: ["monday", "truesday", "wednesday", "thursday", "friday"],
           },
           yAxis: {},
           series: [
@@ -85,12 +89,12 @@ angular.module("component").component("dashboardGraph", {
         ctrl.barGraphRps3 = echarts.init(document.getElementById("bar-rps-3"));
 
         ctrl.barGraphRps3.setOption({
-          title: {
-            text: "ECharts Getting Started Example",
-          },
+          // title: {
+          //   text: "ECharts Getting Started Example",
+          // },
           tooltip: {},
           xAxis: {
-            data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
+            data: ["monday", "truesday", "wednesday", "thursday", "friday"],
           },
           yAxis: {},
           series: [
@@ -112,106 +116,48 @@ angular.module("component").component("dashboardGraph", {
           series: [
             {
               type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              splitNumber: 10,
-              itemStyle: {
-                color: "#FFAB91",
-              },
-              progress: {
-                show: true,
-                width: 20,
-              },
-              pointer: {
-                show: false,
-              },
               axisLine: {
                 lineStyle: {
-                  width: 20,
+                  width: 10,
+                  color: [
+                    [0.5, "#719415"],
+                    [0.9, "#D1BF09"],
+                    [1, "#E50E0E"],
+                  ],
+                },
+              },
+              pointer: {
+                itemStyle: {
+                  color: "auto",
                 },
               },
               axisTick: {
-                // distance: -45,
-                // splitNumber: 5,
-                // lineStyle: {
-                //   width: 2,
-                //   color: '#999'
-                // }
-                show: false,
+                distance: -10,
+                length: 10,
+                lineStyle: {
+                  color: "#fff",
+                  width: 2,
+                },
               },
               splitLine: {
-                distance: 0,
-                length: 0,
+                distance: -10,
+                length: 30,
                 lineStyle: {
-                  // width: 0,
-                  // color: '#999'
-                  show: false,
+                  color: "#fff",
+                  width: 4,
                 },
-                // show: false
-                // show: false
               },
               axisLabel: {
-                distance: -20,
-                color: "#999",
-                fontSize: 12,
-              },
-              anchor: {
-                show: false,
-              },
-              title: {
-                show: false,
+                color: "inherit",
+                distance: -40,
+                fontSize: 15,
               },
               detail: {
                 valueAnimation: true,
-                width: "30%",
-                lineHeight: 20,
-                borderRadius: 4,
-                offsetCenter: [0, "-15%"],
-                fontSize: 30,
-                fontWeight: "bold",
                 formatter: "{value}",
+                fontSize: 30,
                 color: "inherit",
-              },
-              data: [
-                {
-                  value: 70,
-                },
-              ],
-            },
-            {
-              type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              itemStyle: {
-                color: "red",
-              },
-              progress: {
-                show: true,
-                width: 8,
-              },
-              pointer: {
-                show: false,
-              },
-              axisLine: {
-                show: false,
-              },
-              axisTick: {
-                show: false,
-              },
-              splitLine: {
-                show: false,
-              },
-              axisLabel: {
-                show: false,
-              },
-              detail: {
-                show: false,
+                offsetCenter: [0, "125%"],
               },
               data: [
                 {
@@ -230,106 +176,48 @@ angular.module("component").component("dashboardGraph", {
           series: [
             {
               type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              splitNumber: 10,
-              itemStyle: {
-                color: "#FFAB91",
-              },
-              progress: {
-                show: true,
-                width: 20,
-              },
-              pointer: {
-                show: false,
-              },
               axisLine: {
                 lineStyle: {
-                  width: 20,
+                  width: 10,
+                  color: [
+                    [0.5, "#719415"],
+                    [0.9, "#D1BF09"],
+                    [1, "#E50E0E"],
+                  ],
+                },
+              },
+              pointer: {
+                itemStyle: {
+                  color: "auto",
                 },
               },
               axisTick: {
-                // distance: -45,
-                // splitNumber: 5,
-                // lineStyle: {
-                //   width: 2,
-                //   color: '#999'
-                // }
-                show: false,
+                distance: -10,
+                length: 10,
+                lineStyle: {
+                  color: "#fff",
+                  width: 2,
+                },
               },
               splitLine: {
-                distance: 0,
-                length: 0,
+                distance: -10,
+                length: 30,
                 lineStyle: {
-                  // width: 0,
-                  // color: '#999'
-                  show: false,
+                  color: "#fff",
+                  width: 4,
                 },
-                // show: false
-                // show: false
               },
               axisLabel: {
-                distance: -20,
-                color: "#999",
-                fontSize: 12,
-              },
-              anchor: {
-                show: false,
-              },
-              title: {
-                show: false,
+                color: "inherit",
+                distance: -40,
+                fontSize: 15,
               },
               detail: {
                 valueAnimation: true,
-                width: "30%",
-                lineHeight: 20,
-                borderRadius: 4,
-                offsetCenter: [0, "-15%"],
-                fontSize: 30,
-                fontWeight: "bold",
                 formatter: "{value}",
+                fontSize: 30,
                 color: "inherit",
-              },
-              data: [
-                {
-                  value: 70,
-                },
-              ],
-            },
-            {
-              type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              itemStyle: {
-                color: "red",
-              },
-              progress: {
-                show: true,
-                width: 8,
-              },
-              pointer: {
-                show: false,
-              },
-              axisLine: {
-                show: false,
-              },
-              axisTick: {
-                show: false,
-              },
-              splitLine: {
-                show: false,
-              },
-              axisLabel: {
-                show: false,
-              },
-              detail: {
-                show: false,
+                offsetCenter: [0, "125%"],
               },
               data: [
                 {
@@ -348,106 +236,48 @@ angular.module("component").component("dashboardGraph", {
           series: [
             {
               type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              splitNumber: 10,
-              itemStyle: {
-                color: "#FFAB91",
-              },
-              progress: {
-                show: true,
-                width: 20,
-              },
-              pointer: {
-                show: false,
-              },
               axisLine: {
                 lineStyle: {
-                  width: 20,
+                  width: 10,
+                  color: [
+                    [0.5, "#719415"],
+                    [0.9, "#D1BF09"],
+                    [1, "#E50E0E"],
+                  ],
+                },
+              },
+              pointer: {
+                itemStyle: {
+                  color: "auto",
                 },
               },
               axisTick: {
-                // distance: -45,
-                // splitNumber: 5,
-                // lineStyle: {
-                //   width: 2,
-                //   color: '#999'
-                // }
-                show: false,
+                distance: -10,
+                length: 10,
+                lineStyle: {
+                  color: "#fff",
+                  width: 2,
+                },
               },
               splitLine: {
-                distance: 0,
-                length: 0,
+                distance: -10,
+                length: 30,
                 lineStyle: {
-                  // width: 0,
-                  // color: '#999'
-                  show: false,
+                  color: "#fff",
+                  width: 4,
                 },
-                // show: false
-                // show: false
               },
               axisLabel: {
-                distance: -20,
-                color: "#999",
-                fontSize: 12,
-              },
-              anchor: {
-                show: false,
-              },
-              title: {
-                show: false,
+                color: "inherit",
+                distance: -40,
+                fontSize: 15,
               },
               detail: {
                 valueAnimation: true,
-                width: "30%",
-                lineHeight: 20,
-                borderRadius: 4,
-                offsetCenter: [0, "-15%"],
-                fontSize: 30,
-                fontWeight: "bold",
                 formatter: "{value}",
+                fontSize: 30,
                 color: "inherit",
-              },
-              data: [
-                {
-                  value: 70,
-                },
-              ],
-            },
-            {
-              type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              itemStyle: {
-                color: "red",
-              },
-              progress: {
-                show: true,
-                width: 8,
-              },
-              pointer: {
-                show: false,
-              },
-              axisLine: {
-                show: false,
-              },
-              axisTick: {
-                show: false,
-              },
-              splitLine: {
-                show: false,
-              },
-              axisLabel: {
-                show: false,
-              },
-              detail: {
-                show: false,
+                offsetCenter: [0, "125%"],
               },
               data: [
                 {
@@ -458,6 +288,17 @@ angular.module("component").component("dashboardGraph", {
           ],
         });
       };
+
+      ctrl.initDashboardData = function(){
+        DashboardService.get().then(
+          function success(response){
+            console.log(response);
+          },
+          function error(response){
+            console.log(response);
+          }
+        )
+      }
     },
   ],
 });

@@ -34,81 +34,54 @@ angular.module("component").component("site", {
       ctrl.lineGraphSkid3;
       ctrl.indicators = [
         {
-          state: 0,
-          style: {
-            top: "144px",
-            left: "421px",
-          }
+          state: 0, // Indicator state (0, 1, or 2)
+          position: { x: 0.065, y: 0.29 }, // Relative position (values between 0 and 1)
         },
         {
           state: 1,
-          style: {
-            top: "240px",
-            left: "422px",
-          }
+          position: { x: 0.070, y: 0.49 },
         },
         {
           state: 2,
-          style: {
-            top: "336px",
-            left: "427px",
-          }
+          position: { x: 0.065, y: 0.085 },
+        },
+        
+        {
+          state: 2,
+          position: { x: 0.3167, y: 0.096 },
         },
         {
-          state: 0,
-          style: {
-            top: "150px",
-            left: "663px",
-          }
+          state: 0, // Indicator state (0, 1, or 2)
+          position: { x: 0.316, y: 0.29 }, // Relative position (values between 0 and 1)
         },
         {
           state: 1,
-          style: {
-            top: "242px",
-            left: "662px",
-          }
+          position: { x: 0.317, y: 0.495 },
         },
         {
-          state: 2,
-          style: {
-            top: "338px",
-            left: "663px",
-          }
-        },
-        {
-          state: 0,
-          style: {
-            top: "530px",
-            left: "398px",
-          }
+          state: 0, // Indicator state (0, 1, or 2)
+          position: { x: 0.041, y: 0.9 }, // Relative position (values between 0 and 1)
         },
         {
           state: 1,
-          style: {
-            top: "530px",
-            left: "428px",
-          }
+          position: { x: 0.072, y: 0.9 },
         },
         {
           state: 2,
-          style: {
-            top: "530px",
-            left: "457px",
-          }
+          position: { x: 0.102, y: 0.9 },
         },
         {
-          state: 0,
-          style: {
-            top: "530px",
-            left: "488px",
-          }
+          state: 0, // Indicator state (0, 1, or 2)
+          position: { x: 0.134, y: 0.9 }, // Relative position (values between 0 and 1)
         },
       ];
       ctrl.$onInit = function () {
+        ctrl.authUser = JSON.parse(localStorage.getItem("user"));
         ctrl.initBarGraph();
         ctrl.initGuageGraph();
         ctrl.initLineGraph();
         console.log(ctrl.indicators);
+        ctrl.initSiteImage();
         window.addEventListener("resize", function () {
           ctrl.barGraphRps1.resize();
           ctrl.barGraphRps2.resize();
@@ -126,12 +99,12 @@ angular.module("component").component("site", {
         ctrl.barGraphRps1 = echarts.init(document.getElementById("bar-skid-1"));
 
         ctrl.barGraphRps1.setOption({
-          title: {
-            text: "ECharts Getting Started Example",
-          },
+          // title: {
+          //   text: "ECharts Getting Started Example",
+          // },
           tooltip: {},
           xAxis: {
-            data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
+            data: ["monday", "truesday", "wednesday", "thursday", "friday"],
           },
           yAxis: {},
           series: [
@@ -145,12 +118,12 @@ angular.module("component").component("site", {
         ctrl.barGraphRps2 = echarts.init(document.getElementById("bar-skid-2"));
 
         ctrl.barGraphRps2.setOption({
-          title: {
-            text: "ECharts Getting Started Example",
-          },
+          // title: {
+          //   text: "ECharts Getting Started Example",
+          // },
           tooltip: {},
           xAxis: {
-            data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
+            data: ["monday", "truesday", "wednesday", "thursday", "friday"],
           },
           yAxis: {},
           series: [
@@ -165,12 +138,12 @@ angular.module("component").component("site", {
         ctrl.barGraphRps3 = echarts.init(document.getElementById("bar-skid-3"));
 
         ctrl.barGraphRps3.setOption({
-          title: {
-            text: "ECharts Getting Started Example",
-          },
+          // title: {
+          //   text: "ECharts Getting Started Example",
+          // },
           tooltip: {},
           xAxis: {
-            data: ["shirt", "cardigan", "chiffon", "pants", "heels", "socks"],
+            data: ["monday", "truesday", "wednesday", "thursday", "friday"],
           },
           yAxis: {},
           series: [
@@ -192,106 +165,48 @@ angular.module("component").component("site", {
           series: [
             {
               type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              splitNumber: 10,
-              itemStyle: {
-                color: "#FFAB91",
-              },
-              progress: {
-                show: true,
-                width: 20,
-              },
-              pointer: {
-                show: false,
-              },
               axisLine: {
                 lineStyle: {
-                  width: 20,
+                  width: 10,
+                  color: [
+                    [0.5, "#719415"],
+                    [0.9, "#D1BF09"],
+                    [1, "#E50E0E"],
+                  ],
+                },
+              },
+              pointer: {
+                itemStyle: {
+                  color: "auto",
                 },
               },
               axisTick: {
-                // distance: -45,
-                // splitNumber: 5,
-                // lineStyle: {
-                //   width: 2,
-                //   color: '#999'
-                // }
-                show: false,
+                distance: -10,
+                length: 10,
+                lineStyle: {
+                  color: "#fff",
+                  width: 2,
+                },
               },
               splitLine: {
-                distance: 0,
-                length: 0,
+                distance: -10,
+                length: 30,
                 lineStyle: {
-                  // width: 0,
-                  // color: '#999'
-                  show: false,
+                  color: "#fff",
+                  width: 4,
                 },
-                // show: false
-                // show: false
               },
               axisLabel: {
-                distance: -20,
-                color: "#999",
-                fontSize: 12,
-              },
-              anchor: {
-                show: false,
-              },
-              title: {
-                show: false,
+                color: "inherit",
+                distance: -40,
+                fontSize: 15,
               },
               detail: {
                 valueAnimation: true,
-                width: "30%",
-                lineHeight: 20,
-                borderRadius: 4,
-                offsetCenter: [0, "-15%"],
-                fontSize: 30,
-                fontWeight: "bold",
                 formatter: "{value}",
+                fontSize: 30,
                 color: "inherit",
-              },
-              data: [
-                {
-                  value: 70,
-                },
-              ],
-            },
-            {
-              type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              itemStyle: {
-                color: "red",
-              },
-              progress: {
-                show: true,
-                width: 8,
-              },
-              pointer: {
-                show: false,
-              },
-              axisLine: {
-                show: false,
-              },
-              axisTick: {
-                show: false,
-              },
-              splitLine: {
-                show: false,
-              },
-              axisLabel: {
-                show: false,
-              },
-              detail: {
-                show: false,
+                offsetCenter: [0, "125%"],
               },
               data: [
                 {
@@ -310,106 +225,48 @@ angular.module("component").component("site", {
           series: [
             {
               type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              splitNumber: 10,
-              itemStyle: {
-                color: "#FFAB91",
-              },
-              progress: {
-                show: true,
-                width: 20,
-              },
-              pointer: {
-                show: false,
-              },
               axisLine: {
                 lineStyle: {
-                  width: 20,
+                  width: 10,
+                  color: [
+                    [0.5, "#719415"],
+                    [0.9, "#D1BF09"],
+                    [1, "#E50E0E"],
+                  ],
+                },
+              },
+              pointer: {
+                itemStyle: {
+                  color: "auto",
                 },
               },
               axisTick: {
-                // distance: -45,
-                // splitNumber: 5,
-                // lineStyle: {
-                //   width: 2,
-                //   color: '#999'
-                // }
-                show: false,
+                distance: -10,
+                length: 10,
+                lineStyle: {
+                  color: "#fff",
+                  width: 2,
+                },
               },
               splitLine: {
-                distance: 0,
-                length: 0,
+                distance: -10,
+                length: 30,
                 lineStyle: {
-                  // width: 0,
-                  // color: '#999'
-                  show: false,
+                  color: "#fff",
+                  width: 4,
                 },
-                // show: false
-                // show: false
               },
               axisLabel: {
-                distance: -20,
-                color: "#999",
-                fontSize: 12,
-              },
-              anchor: {
-                show: false,
-              },
-              title: {
-                show: false,
+                color: "inherit",
+                distance: -40,
+                fontSize: 15,
               },
               detail: {
                 valueAnimation: true,
-                width: "30%",
-                lineHeight: 20,
-                borderRadius: 4,
-                offsetCenter: [0, "-15%"],
-                fontSize: 30,
-                fontWeight: "bold",
                 formatter: "{value}",
+                fontSize: 30,
                 color: "inherit",
-              },
-              data: [
-                {
-                  value: 70,
-                },
-              ],
-            },
-            {
-              type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              itemStyle: {
-                color: "red",
-              },
-              progress: {
-                show: true,
-                width: 8,
-              },
-              pointer: {
-                show: false,
-              },
-              axisLine: {
-                show: false,
-              },
-              axisTick: {
-                show: false,
-              },
-              splitLine: {
-                show: false,
-              },
-              axisLabel: {
-                show: false,
-              },
-              detail: {
-                show: false,
+                offsetCenter: [0, "125%"],
               },
               data: [
                 {
@@ -428,106 +285,48 @@ angular.module("component").component("site", {
           series: [
             {
               type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              splitNumber: 10,
-              itemStyle: {
-                color: "#FFAB91",
-              },
-              progress: {
-                show: true,
-                width: 20,
-              },
-              pointer: {
-                show: false,
-              },
               axisLine: {
                 lineStyle: {
-                  width: 20,
+                  width: 10,
+                  color: [
+                    [0.5, "#719415"],
+                    [0.9, "#D1BF09"],
+                    [1, "#E50E0E"],
+                  ],
+                },
+              },
+              pointer: {
+                itemStyle: {
+                  color: "auto",
                 },
               },
               axisTick: {
-                // distance: -45,
-                // splitNumber: 5,
-                // lineStyle: {
-                //   width: 2,
-                //   color: '#999'
-                // }
-                show: false,
+                distance: -10,
+                length: 10,
+                lineStyle: {
+                  color: "#fff",
+                  width: 2,
+                },
               },
               splitLine: {
-                distance: 0,
-                length: 0,
+                distance: -10,
+                length: 30,
                 lineStyle: {
-                  // width: 0,
-                  // color: '#999'
-                  show: false,
+                  color: "#fff",
+                  width: 4,
                 },
-                // show: false
-                // show: false
               },
               axisLabel: {
-                distance: -20,
-                color: "#999",
-                fontSize: 12,
-              },
-              anchor: {
-                show: false,
-              },
-              title: {
-                show: false,
+                color: "inherit",
+                distance: -40,
+                fontSize: 15,
               },
               detail: {
                 valueAnimation: true,
-                width: "30%",
-                lineHeight: 20,
-                borderRadius: 4,
-                offsetCenter: [0, "-15%"],
-                fontSize: 30,
-                fontWeight: "bold",
                 formatter: "{value}",
+                fontSize: 30,
                 color: "inherit",
-              },
-              data: [
-                {
-                  value: 70,
-                },
-              ],
-            },
-            {
-              type: "gauge",
-              center: ["50%", "70%"],
-              startAngle: 200,
-              endAngle: -20,
-              min: 0,
-              max: 100,
-              itemStyle: {
-                color: "red",
-              },
-              progress: {
-                show: true,
-                width: 8,
-              },
-              pointer: {
-                show: false,
-              },
-              axisLine: {
-                show: false,
-              },
-              axisTick: {
-                show: false,
-              },
-              splitLine: {
-                show: false,
-              },
-              axisLabel: {
-                show: false,
-              },
-              detail: {
-                show: false,
+                offsetCenter: [0, "125%"],
               },
               data: [
                 {
@@ -537,6 +336,44 @@ angular.module("component").component("site", {
             },
           ],
         });
+      };
+
+      ctrl.initSiteImage = function () {
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+
+        var img = new Image();
+        img.src = config.APP_URL + "/assets/img/site-image.png";
+
+        img.onload = function () {
+          // Set canvas size based on container dimensions
+          canvas.width = canvas.parentElement.clientWidth;
+          canvas.height = canvas.parentElement.clientHeight;
+
+          // Calculate the aspect ratio for relative positions
+          var aspectRatio = canvas.width / img.width;
+
+          // Draw the image onto the canvas
+          context.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          // Draw the indicators
+          ctrl.indicators.forEach(function (indicator) {
+            var x = indicator.position.x * canvas.width;
+            var y = indicator.position.y * canvas.height;
+
+            // Customize indicator styles based on indicator.state
+            context.beginPath();
+            context.arc(x, y, 8 * aspectRatio, 0, 2 * Math.PI);
+            context.fillStyle =
+              indicator.state === 0
+                ? "red"
+                : indicator.state === 1
+                ? "green"
+                : "grey";
+            context.fill();
+            context.closePath();
+          });
+        };
       };
 
       ctrl.initLineGraph = function () {
@@ -556,12 +393,12 @@ angular.module("component").component("site", {
             data: hoursInDay,
           },
           yAxis: {
-            type: "value",
-            data: value,
+            type: "category",
+            data: ['0', '1'],
           },
           series: [
             {
-              data: [0.5, 0.1, 0.7, 0, 0, 0.3, 0.8],
+              data: [false, true],
               type: "line",
             },
           ],
