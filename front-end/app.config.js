@@ -45,6 +45,7 @@ angular.module("myApp").config([
     var $window = $windowProvider.$get();
     $httpProvider.interceptors.push(function ($q) {
       return {
+        
         request: function (config) {
           // add authorize header
           if (localStorage.getItem("auth_token")) {
@@ -54,7 +55,7 @@ angular.module("myApp").config([
           return config;
         },
         requestError: function (config) {
-          //console.log(config.headers);
+          console.log(config.headers);
           return config;
         },
         response: function (response) {

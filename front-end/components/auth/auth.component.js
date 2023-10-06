@@ -40,26 +40,29 @@ angular.module("component").component("auth", {
 
       ctrl.login = function () {
         ctrl.errors = {};
-        window.location.href = config.APP_URL + '#!/dashboard';
-        // UserService.login(ctrl.user).then(
-        //   function successCallback(response) {
-        //     console.log(response);
-        //     // localStorage.setItem("auth_token", response.data.user.access_token);
-        //     // localStorage.setItem("full_name", response.data.user.name);
-        //     // localStorage.setItem("user_type_id", response.data.user.user_type_id);
-        //     // localStorage.setItem("user_id", response.data.user.id);
-        //       // localStorage.setItem("user_type_name", response.data.user.user_type_name);
-        //       console.log(response);
+        // window.location.href = config.APP_URL + '#!/dashboard';
+        UserService.login(ctrl.user).then(
+          function successCallback(response) {
+            console.log(response.data);
+            // UserService.setUser(response.data);
+            localStorage.setItem("user", JSON.stringify(response.data));
+            window.location.href = config.APP_URL + '#!/dashboard';
 
-        //   },
-        //   function errorCallback(response) {
-        //     if (response.status == 400) {
-        //       ctrl.errors = response.data.error;
-        //       console.log(ctrl.errors);
-        //     }
-        //     //appAlert('', 'An unexpected error has occured. Please contact site administrator.', 'error');
-        //   }
-        // );
+            // localStorage.setItem("full_name", response.data.user.name);
+            // localStorage.setItem("user_type_id", response.data.user.user_type_id);
+            // localStorage.setItem("user_id", response.data.user.id);
+              // localStorage.setItem("user_type_name", response.data.user.user_type_name);
+              // console.log(response);
+
+          },
+          function errorCallback(response) {
+            if (response.status == 400) {
+              ctrl.errors = response.data.error;
+              console.log(ctrl.errors);
+            }
+            //appAlert('', 'An unexpected error has occured. Please contact site administrator.', 'error');
+          }
+        );
       };
     },
   ],

@@ -1,19 +1,25 @@
 'use strict';
 
 function UserService($http, API_URL) {
+  var user;
+
   return {
     login: function (auth) {
       return $http({
         method: 'POST',
-        url: API_URL+'/auth/login',
+        url: config.API_URL+'/auth/login',
         data: auth
       });
     },
-
     authenticate: function(){
       return localStorage.getItem('auth_token') ? true : false;
     },
-
+    setUser: function(authUser){
+      user = authUser;
+    },
+    getUser: function(){
+      return user;
+    },
     logout: function () {
       return $http({
         method: 'GET',
@@ -38,7 +44,7 @@ function UserService($http, API_URL) {
     create: function (data){
       return $http({
         method: "POST",
-        url: API_URL + '/user/create',
+        url: API_URL + '/user/register',
         data: data
       })
     },
