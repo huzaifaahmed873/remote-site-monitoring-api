@@ -87,5 +87,12 @@ angular.module("myApp").config([
 ]).run(function ($rootScope, $window, APP_URL) {
   $rootScope.$on("$routeChangeStart", function (event, next, current) {
     $rootScope.$broadcast("Route::change");
+    if(next.active == 'login'){
+      document.body.classList.add('back-image');
+      document.body.classList.remove('bg-white');
+    }else{
+      document.body.classList.remove('back-image');
+      document.body.classList.add('bg-white');
+    }
   });
 })
