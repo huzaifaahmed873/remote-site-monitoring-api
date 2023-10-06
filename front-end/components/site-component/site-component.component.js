@@ -9,6 +9,8 @@ angular.module("component").component("site", {
     "$rootScope",
     // "RevenueService",
     // "DashboardService",
+    "$interval",
+    "DashboardService",
     "UserService",
     "Constant",
     function DashboardGraphController(
@@ -18,11 +20,24 @@ angular.module("component").component("site", {
       $rootScope,
       // RevenueService,
       // DashboardService,
+      $interval,
+      DashboardService,
       UserService,
       Constant
     ) {
       var ctrl = this;
 
+      ctrl.myInterval = $interval(function() {
+        // Code to be executed periodically
+        console.log('Interval is running...');
+        ctrl.initDashboardData();
+      }, 1000); // Runs every 1000 milliseconds (1 second)
+    
+      // Detect when the view is destroyed
+      $scope.$on('$destroy', function() {
+        // Clear the interval when the view is changed or destroyed
+        $interval.cancel(ctrl.myInterval);
+      });
       ctrl.barGraphRps1;
       ctrl.barGraphRps2;
       ctrl.barGraphRps3;
@@ -175,6 +190,9 @@ angular.module("component").component("site", {
                   ],
                 },
               },
+              
+              max: 200,
+              splitNumber: 2,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -190,10 +208,10 @@ angular.module("component").component("site", {
               },
               splitLine: {
                 distance: -10,
-                length: 30,
+                length: 20,
                 lineStyle: {
                   color: "#fff",
-                  width: 4,
+                  width: 2,
                 },
               },
               axisLabel: {
@@ -235,6 +253,9 @@ angular.module("component").component("site", {
                   ],
                 },
               },
+              
+              max: 200,
+              splitNumber: 2,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -250,10 +271,10 @@ angular.module("component").component("site", {
               },
               splitLine: {
                 distance: -10,
-                length: 30,
+                length: 20,
                 lineStyle: {
                   color: "#fff",
-                  width: 4,
+                  width: 2,
                 },
               },
               axisLabel: {
@@ -295,6 +316,9 @@ angular.module("component").component("site", {
                   ],
                 },
               },
+              
+              max: 200,
+              splitNumber: 2,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -310,10 +334,10 @@ angular.module("component").component("site", {
               },
               splitLine: {
                 distance: -10,
-                length: 30,
+                length: 20,
                 lineStyle: {
                   color: "#fff",
-                  width: 4,
+                  width: 2,
                 },
               },
               axisLabel: {
@@ -414,11 +438,12 @@ angular.module("component").component("site", {
             data: hoursInDay,
           },
           yAxis: {
-            type: "value",
+            type: "category",
+            data: ['0', '1'],
           },
           series: [
             {
-              data: [150, 230, 224, 218, 135, 147, 260],
+              data: [false, true],
               type: "line",
             },
           ],
@@ -434,16 +459,53 @@ angular.module("component").component("site", {
             data: hoursInDay,
           },
           yAxis: {
-            type: "value",
+            type: "category",
+            data: ['0', '1'],
           },
           series: [
             {
-              data: [150, 230, 224, 218, 135, 147, 260],
+              data: [false, true],
               type: "line",
             },
           ],
         });
       };
+
+      ctrl.initDashboardData = function(){
+        DashboardService.getFlowRate1().then(
+          function success(response){
+            console.log(response.data[response.data.length - 1].value);
+            let flow_rate_value = response.data[response.data.length - 1].value.toFixed(2) ;
+            ctrl.guageGraphRps1.setOption({
+              series: [
+                {
+                  data: [{ value: flow_rate_value }],
+                },
+              ],
+            })
+          },
+          function error(response){
+            console.log(response);
+          }
+        )
+
+        DashboardService.getFlowRate2().then(
+          function success(response){
+            console.log(response.data[response.data.length - 1].value);
+            let flow_rate_value = response.data[response.data.length - 1].value.toFixed(2) ;
+            ctrl.guageGraphRps2.setOption({
+              series: [
+                {
+                  data: [{ value: flow_rate_value }],
+                },
+              ],
+            })
+          },
+          function error(response){
+            console.log(response);
+          }
+        )
+      }
     },
   ],
 });

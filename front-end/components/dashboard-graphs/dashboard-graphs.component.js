@@ -8,6 +8,7 @@ angular.module("component").component("dashboardGraph", {
     "$routeParams",
     "$rootScope",
     // "RevenueService",
+    "$interval",
     "DashboardService",
     "UserService",
     "Constant",
@@ -17,12 +18,24 @@ angular.module("component").component("dashboardGraph", {
       $routeParams,
       $rootScope,
       // RevenueService,
+      $interval,
       DashboardService,
       UserService,
       Constant
     ) {
       var ctrl = this;
 
+      ctrl.myInterval = $interval(function() {
+        // Code to be executed periodically
+        console.log('Interval is running...');
+        ctrl.initDashboardData();
+      }, 1000); // Runs every 1000 milliseconds (1 second)
+    
+      // Detect when the view is destroyed
+      $scope.$on('$destroy', function() {
+        // Clear the interval when the view is changed or destroyed
+        $interval.cancel(ctrl.myInterval);
+      });
       ctrl.barGraphRps1;
       ctrl.barGraphRps2;
       ctrl.barGraphRps3;
@@ -43,7 +56,7 @@ angular.module("component").component("dashboardGraph", {
           ctrl.guageGraphRps2.resize();
           ctrl.guageGraphRps3.resize();
         });
-        ctrl.initDashboardData();
+        
       };
 
       ctrl.initBarGraph = function () {
@@ -126,6 +139,9 @@ angular.module("component").component("dashboardGraph", {
                   ],
                 },
               },
+              
+              max: 200,
+              splitNumber: 2,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -141,10 +157,10 @@ angular.module("component").component("dashboardGraph", {
               },
               splitLine: {
                 distance: -10,
-                length: 30,
+                length: 20,
                 lineStyle: {
                   color: "#fff",
-                  width: 4,
+                  width: 2,
                 },
               },
               axisLabel: {
@@ -186,6 +202,9 @@ angular.module("component").component("dashboardGraph", {
                   ],
                 },
               },
+              
+              max: 200,
+              splitNumber: 2,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -201,10 +220,10 @@ angular.module("component").component("dashboardGraph", {
               },
               splitLine: {
                 distance: -10,
-                length: 30,
+                length: 20,
                 lineStyle: {
                   color: "#fff",
-                  width: 4,
+                  width: 2,
                 },
               },
               axisLabel: {
@@ -246,6 +265,9 @@ angular.module("component").component("dashboardGraph", {
                   ],
                 },
               },
+              
+              max: 200,
+              splitNumber: 2,
               pointer: {
                 itemStyle: {
                   color: "auto",
@@ -261,10 +283,10 @@ angular.module("component").component("dashboardGraph", {
               },
               splitLine: {
                 distance: -10,
-                length: 30,
+                length: 20,
                 lineStyle: {
                   color: "#fff",
-                  width: 4,
+                  width: 2,
                 },
               },
               axisLabel: {
@@ -281,7 +303,7 @@ angular.module("component").component("dashboardGraph", {
               },
               data: [
                 {
-                  value: 70,
+                  value: 0,
                 },
               ],
             },
@@ -290,9 +312,34 @@ angular.module("component").component("dashboardGraph", {
       };
 
       ctrl.initDashboardData = function(){
-        DashboardService.get().then(
+        DashboardService.getFlowRate1().then(
           function success(response){
+            console.log(response.data[response.data.length - 1].value);
+            let flow_rate_value = response.data[response.data.length - 1].value.toFixed(2) ;
+            ctrl.guageGraphRps1.setOption({
+              series: [
+                {
+                  data: [{ value: flow_rate_value }],
+                },
+              ],
+            })
+          },
+          function error(response){
             console.log(response);
+          }
+        )
+
+        DashboardService.getFlowRate2().then(
+          function success(response){
+            console.log(response.data[response.data.length - 1].value);
+            let flow_rate_value = response.data[response.data.length - 1].value.toFixed(2) ;
+            ctrl.guageGraphRps2.setOption({
+              series: [
+                {
+                  data: [{ value: flow_rate_value }],
+                },
+              ],
+            })
           },
           function error(response){
             console.log(response);
